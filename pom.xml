@@ -6,6 +6,13 @@
     <packaging>apk</packaging>
     <name>PHR_android-hybrid-hw</name>
     <version>1.0.0</version>
+    
+     <scm>
+        <connection>scm:git:git@github.com:phresco/android-hybrid-hw.git</connection>
+        <developerConnection>scm:git:git@github.com:phresco/android-hybrid-hw.git</developerConnection>
+        <url>https://github.com/phresco/android-hybrid-hw</url>
+    </scm>
+    
     <build>
         <sourceDirectory>source/src</sourceDirectory>
         <outputDirectory>do_not_checkin/target/android-classes</outputDirectory>
