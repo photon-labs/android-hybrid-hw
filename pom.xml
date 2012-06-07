@@ -5,7 +5,7 @@
     <artifactId>PHR_android-hybrid-hw</artifactId>
     <packaging>apk</packaging>
     <name>PHR_android-hybrid-hw</name>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0.1000-SNAPSHOT</version>
     
      <scm>
         <connection>scm:git:git@github.com:phresco/android-hybrid-hw.git</connection>
