@@ -6,6 +6,7 @@
     <packaging>apk</packaging>
     <name>PHR_android-hybrid-hw</name>
     <version>2.0.0.1000-SNAPSHOT</version>
+
     
      <scm>
         <connection>scm:git:git@github.com:phresco/android-hybrid-hw.git</connection>
