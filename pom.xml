@@ -1,0 +1,115 @@
+<!--
+  ###
+  Archetype - phresco-android-hybrid-archetype
+  
+  Copyright (C) 1999 - 2012 Photon Infotech Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ###
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<version>${version}</version>
+	<name>${artifactId}</name>
+	<packaging>apk</packaging>
+    
+    <properties>
+    	<android.version>2.3.3</android.version>
+    </properties>
+    
+    <dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${android.version}</version>
+			<scope>provided</scope>
+		</dependency>
+    </dependencies>
+	<build>
+		<directory>do_not_checkin/target</directory>
+		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>source/src</sourceDirectory>
+		<outputDirectory>do_not_checkin/target/android-classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>source/res</directory>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.photon.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>1.2.1.1000-SNAPSHOT</version>
+					<extensions>true</extensions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+    <!-- To use the plugin goals in your POM or parent POM -->
+		<plugins>
+            <plugin>
+                <groupId>com.photon.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <run>
+                        <debug>true</debug>
+                    </run>
+                    <sdk>
+                        <platform>${android.version}</platform>
+                    </sdk>
+					<extractDuplicates>true</extractDuplicates> 
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                </configuration>
+            </plugin>
+        </plugins>
+	</build>
+<profiles>
+        <profile>
+            <id>ci</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+		        <plugins>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>2.5</version>
+						<executions>
+						  <execution>
+							<id>default-clean</id>
+							<phase>pre-clean</phase>
+							<goals>
+							  <goal>clean</goal>
+							</goals>
+						  </execution>
+						</executions>
+						<configuration>
+						  <filesets>
+							<fileset>
+							  <directory>do_not_checkin/build</directory>
+							  <includes>
+								<include>**/*</include>
+							  </includes>
+							  <followSymlinks>false</followSymlinks>
+							</fileset>
+						  </filesets>
+						</configuration>
+					  </plugin>
+		        </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
